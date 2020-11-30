@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 2.6)
+project(setdo)
+add_executable(setdo setdo.c)
+target_link_libraries(setdo gpiod)
+install(TARGETS setdo RUNTIME DESTINATION bin)
+
+project(getdi)
+add_executable(getdi getdi.c)
+target_link_libraries(getdi gpiod)
+install(TARGETS getdi RUNTIME DESTINATION bin)
