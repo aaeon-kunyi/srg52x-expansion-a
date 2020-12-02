@@ -12,8 +12,8 @@
 /*
     DI0 --> gpio2.6
     DI1 --> gpio2.7
-    DI2 --> gpio0.22
-    DI3 --> gpio0.23
+    DI2 --> gpio2.22
+    DI3 --> gpio2.23
     getdi 0
 */
 
@@ -29,7 +29,6 @@ static void print_usage()
 int main(int argc, char **argv)
 {
 	char *gpio2 = "gpiochip2";
-	char *gpio0 = "gpiochip0";
 	unsigned int  pinnums[] = { 6, 7, 22, 23 };
 	unsigned int val;
 	struct gpiod_chip *chip;
@@ -53,12 +52,9 @@ int main(int argc, char **argv)
 		print_usage();
 		return 3;
 	}
-	
+
 	i = pin - '0';
-	if (i < 2)
-		chip = gpiod_chip_open_by_name(gpio2);
-	else
-		chip = gpiod_chip_open_by_name(gpio0);
+	chip = gpiod_chip_open_by_name(gpio2);
 
 	if (!chip) {
 		perror("Open DI failed\n");
